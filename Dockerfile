@@ -1,13 +1,8 @@
 FROM debian:bullseye-slim
 
 
-
-#files
-COPY root/ /
-
 #deps
 RUN sed -i 's/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list \
-    && chmod 777 /*.sh \
     && apt-get update && apt-get install -y \
     git net-tools curl wget supervisor fluxbox xterm \
     x11vnc novnc xvfb xdotool \
@@ -42,6 +37,8 @@ ENV DISPLAY_WIDTH=1280 \
     WINEPREFIX=/home/app/.wine \
     NPM_CONFIG_PREFIX=/home/app/.npm-global
 
+#files
+COPY root/ /
 
 EXPOSE 8080
 
@@ -56,9 +53,9 @@ WORKDIR /home/app
 
 
 
+
 # init with GUI
-RUN bash -c 'nohup /supervisord.sh 2>&1 &' && sleep 6 && /init.sh  \
-    && sudo rm /tmp/.X0-lock \
+RUN bash -c 'sudo nohup /entrypoint.sh 2>&1 &' && sleep 6 &&  /init.sh && sudo rm /tmp/.X0-lock \
     && (sudo chown -R app:app /drive_c && cp -r /drive_c/* /home/app/.wine/drive_c/ || true) 
 
 #settings
