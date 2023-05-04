@@ -43,7 +43,7 @@ function install() {
     done
 }
 
-wine /tmp/WeChatSetup-v3.6.0.18.exe &
+wine /WeChatSetup-v3.6.0.18.exe &
 install
 wait
 sleep 15
