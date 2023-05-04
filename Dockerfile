@@ -51,7 +51,9 @@ RUN echo 'export PATH=$PATH:/home/app/.npm-global/bin' >> /home/app/.bashrc
 USER app
 WORKDIR /home/app
 
-
+RUN sudo chmod 777 /*.sh \
+    && sudo chmod 777 /init/*.sh \
+    && sudo chmod 777 /bin/inject-dll /bin/inject-monitor /bin/wechat-monitor /bin/wechat-start
 
 
 # init with GUI
