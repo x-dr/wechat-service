@@ -55,7 +55,7 @@ WORKDIR /home/app
 
 
 # init with GUI
-RUN bash -c 'sudo nohup /entrypoint.sh 2>&1 &' && sleep 6 &&  /init.sh && sudo rm /tmp/.X0-lock \
+RUN bash -c 'nohup /entrypoint.sh 2>&1 &' && sleep 6 &&  /init.sh && sudo rm /tmp/.X0-lock \
     && (sudo chown -R app:app /drive_c && cp -r /drive_c/* /home/app/.wine/drive_c/ || true) 
 
 #settings
