@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 ## https://gitlab.com/cunidev/gestures/-/wikis/xdotool-list-of-key-codes
 echo "download WeChatSetup-3.6.0.18.exe"
-# wget https://github.com/tom-snow/wechat-windows-versions/releases/download/v3.6.0.18/WeChatSetup-3.6.0.18.exe -o /tmp/WeChatSetup-3.6.0.18.exe
+wget https://github.com/tom-snow/wechat-windows-versions/releases/download/v3.6.0.18/WeChatSetup-3.6.0.18.exe -o /WeChatSetup-3.6.0.18.exe
 
 function install() {
     while :
