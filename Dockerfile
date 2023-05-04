@@ -55,8 +55,6 @@ WORKDIR /home/app
 
 
 # init with GUI
-RUN ls -la /
-
 RUN bash -c 'nohup /entrypoint.sh 2>&1 &' \
     && sleep 6 \
     &&  /init.sh \
