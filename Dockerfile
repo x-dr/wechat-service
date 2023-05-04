@@ -52,7 +52,9 @@ WORKDIR /home/app
 
 
 # init with GUI
-RUN ls -la \
+RUN ls -la / \
+    && chmod 777 /supervisord.sh \
+    && chmod 777 /init.sh \
     && bash -c 'nohup /supervisord.sh 2>&1 &' && sleep 6 && /init.sh  \
     && sudo rm /tmp/.X0-lock \
     && (sudo chown -R app:app /drive_c && cp -r /drive_c/* /home/app/.wine/drive_c/ || true) 
