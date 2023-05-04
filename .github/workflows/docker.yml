@@ -17,6 +17,9 @@ jobs:
         id: tag
         run: |
             echo "tag=$(date +%Y)-$(date +%m)-$(date +%d)" >> $GITHUB_ENV
+            pwd
+            sudo chmod 777 root/*.sh
+            sudo chmod 777 root/init/*.sh
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 
