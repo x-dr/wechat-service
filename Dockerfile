@@ -52,7 +52,8 @@ WORKDIR /home/app
 
 
 # init with GUI
-RUN chmod +x /*.sh \
+RUN chmod +x /init.sh /supervisord.sh  \
+    && ls -la \
     && bash -c 'nohup /supervisord.sh 2>&1 &' && sleep 6 && /init.sh  \
     && sudo rm /tmp/.X0-lock \
     && (sudo chown -R app:app /drive_c && cp -r /drive_c/* /home/app/.wine/drive_c/ || true) 
