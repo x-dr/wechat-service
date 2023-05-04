@@ -3,6 +3,8 @@ FROM debian:bullseye-slim
 
 #deps
 RUN sed -i 's/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list \
+    && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo "Asia/Shanghai" > /etc/timezone \
     && apt-get update && apt-get install -y \
     git net-tools curl wget supervisor fluxbox xterm \
     x11vnc novnc xvfb xdotool \
