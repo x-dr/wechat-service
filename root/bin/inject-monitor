@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+INJMON_LOG_FILE=${INJMON_LOG_FILE:-/dev/stdout}
+
+function monitor() {
+    while true; do
+        if ps -aux | grep funtool | grep -v grep > /dev/null; then
+            echo "funtool is running."
+            break
+        else
+            echo "funtool isn't running. starting..."
+            inject-dll
+            sleep 10
+        fi
+    done
+}
+
+monitor
