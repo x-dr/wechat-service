@@ -8,4 +8,3 @@ case $RUN_XTERM in
     ;;
 esac
 exec sudo -E bash -c 'supervisord -c /etc/supervisord.conf -l /var/log/supervisord.log'
-wait
