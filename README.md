@@ -8,3 +8,10 @@ docker run -it  --name wechat-service --rm  \
     --add-host=dldir1.qq.com:127.0.0.1 \
     gindex/wechat-box:latest
 ```
+
+
+### 感谢
+
+[@cixingguangming55555](https://github.com/cixingguangming55555/wechat-bot)
+
+[@ChisBread](https://github.com/ChisBread/wechat-service)
