@@ -12,14 +12,17 @@ fi
 TARGET_WECHAT_BOT=${TARGET_WECHAT_BOT:-no}
 case $TARGET_WECHAT_BOT in
   yes|1|true)
+    cd ~
     git clone https://ghproxy.com/https://github.com/x-dr/wechat-bot.git
+    cd wechat-bot
+    npm i --registry=https://registry.npmmirror.com
     ;;
 esac
 
 UPDATE_WECHAT_BOT=${TARGET_WECHAT_BOT:-no}
 case $UPDATE_WECHAT_BOT in
   yes|1|true)
-    cd wechat-bot
+    cd ~/wechat-bot
     git checkout .
     git pull
     cd ~

@@ -47,15 +47,17 @@ EXPOSE 8080
 
 
 # Allow app user to install global npm packages
-RUN mkdir /home/app/.npm-global && chown -R app:app /home/app/.npm-global
-RUN echo 'export PATH=$PATH:/home/app/.npm-global/bin' >> /home/app/.bashrc
+RUN mkdir /home/app/.npm-global \
+    && chown -R app:app /home/app/.npm-global \
+    && echo 'export PATH=$PATH:/home/app/.npm-global/bin' >> /home/app/.bashrc \
+    && npm install pm2 -g
 
 USER app
 WORKDIR /home/app
 
 RUN sudo chmod 777 /*.sh \
     && sudo chmod 777 /init/*.sh \
-    && sudo chmod 777 /bin/inject-dll /bin/inject-monitor /bin/wechat-monitor /bin/wechat-start
+    && sudo chmod 777 /bin/inject-dll /bin/inject-monitor /bin/wechat-monitor /bin/wechat-start /bin/startbot
 
 
 # init with GUI
@@ -63,7 +65,9 @@ RUN bash -c 'nohup /entrypoint.sh 2>&1 &' \
     && sleep 6 \
     &&  /init.sh \
     && sudo rm /tmp/.X0-lock \
-    && (sudo chown -R app:app /drive_c && cp -r /drive_c/* /home/app/.wine/drive_c/ || true) 
+    && (sudo chown -R app:app /drive_c && cp -r /drive_c/* /home/app/.wine/drive_c/ || true)
+
+
 
 #settings
 ENTRYPOINT ["/entrypoint.sh"]
