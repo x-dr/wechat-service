@@ -9,6 +9,22 @@ if [ -n "$VNC_PASSWORD" ]; then
     export VNC_PASSWORD=
 fi
 
+TARGET_WECHAT_BOT=${TARGET_WECHAT_BOT:-no}
+case $TARGET_WECHAT_BOT in
+  yes|1|true)
+    git clone https://ghproxy.com/https://github.com/x-dr/wechat-bot.git
+    ;;
+esac
+
+UPDATE_WECHAT_BOT=${TARGET_WECHAT_BOT:-no}
+case $UPDATE_WECHAT_BOT in
+  yes|1|true)
+    cd wechat-bot
+    git checkout .
+    git pull
+    cd ~
+    ;;
+esac
 
 TARGET_AUTO_RESTART=${TARGET_AUTO_RESTART:-no}
 TARGET_LOG_FILE=${TARGET_LOG_FILE:-/dev/null}
