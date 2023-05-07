@@ -9,7 +9,7 @@ RUN sed -i 's/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.li
     git net-tools curl wget supervisor fluxbox xterm \
     x11vnc novnc xvfb xdotool \
     gnupg2 software-properties-common \
-    ttf-wqy-microhei locales procps vim sudo
+    ttf-wqy-microhei locales procps vim sudo git
 
 #install wine
 RUN dpkg --add-architecture i386 && apt-get full-upgrade -y \
